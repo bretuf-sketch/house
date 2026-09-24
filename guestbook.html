@@ -13,35 +13,31 @@
 <div class="card">
 <h1>Гостевая</h1>
 <p>Оставьте своё имя и сообщение.</p>
-<form id="guestForm">
-<label>Имя</label><input id="name" type="text" placeholder="Ваше имя" required>
-<label>Сообщение</label><textarea id="message" placeholder="Ваше сообщение" required></textarea>
-<button type="submit">Оставить сообщение</button>
+<label>Имя</label><input id="name" type="text" placeholder="Ваше имя">
+<label>Сообщение</label><textarea id="message" placeholder="Ваше сообщение"></textarea>
+<button type="button" id="send">Оставить сообщение</button>
 <div id="ok" class="ok">Сообщение добавлено!</div>
-</form>
 <div id="messages"></div>
 </div></div>
 <script>
 const KEY='house_guestbook_messages';
+function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));}
 function load(){
- const box=document.getElementById('messages');
  const arr=JSON.parse(localStorage.getItem(KEY)||'[]');
- box.innerHTML=arr.map(x=>'<div class="message"><b>'+escapeHtml(x.name)+'</b><br>'+escapeHtml(x.message)+'</div>').join('');
+ document.getElementById('messages').innerHTML=arr.map(x=>'<div class="message"><b>'+escapeHtml(x.name)+'</b><br>'+escapeHtml(x.message)+'</div>').join('');
 }
-function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));}
-document.getElementById('guestForm').addEventListener('submit',function(e){
- e.preventDefault();
+document.getElementById('send').onclick=function(){
  const name=document.getElementById('name').value.trim();
  const message=document.getElementById('message').value.trim();
- if(!name||!message)return;
+ if(!name||!message){alert('Введите имя и сообщение.');return;}
  const arr=JSON.parse(localStorage.getItem(KEY)||'[]');
- arr.unshift({name,message});
+ arr.unshift({name:name,message:message});
  localStorage.setItem(KEY,JSON.stringify(arr.slice(0,100)));
  document.getElementById('message').value='';
  document.getElementById('ok').style.display='block';
  load();
  setTimeout(()=>document.getElementById('ok').style.display='none',2500);
-});
+};
 load();
 </script>
 </body></html>
