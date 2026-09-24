@@ -24,6 +24,7 @@ h1{font-size:clamp(48px,9vw,88px);line-height:.95;margin:24px 0;text-align:cente
 .buttons{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
 .btn{padding:14px 20px;border-radius:13px;text-decoration:none;font-weight:700;border:1px solid var(--line)}
 .primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+.chat-button{display:block;width:min(720px,100%);margin-top:26px;padding:20px 24px;border-radius:16px;text-align:center;text-decoration:none;font-size:28px;font-weight:800;background:#0645ad;color:#fff;border:1px solid #0645ad}
 section{padding:70px 0}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .card{background:rgba(255,244,168,.9);border:1px solid var(--line);border-radius:22px;padding:26px}
@@ -32,7 +33,7 @@ section{padding:70px 0}
 h2{font-size:36px;margin:0 0 28px}
 .about{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 footer{padding:35px 0;color:var(--muted);border-top:1px solid var(--line);font-size:14px}
-@media(max-width:720px){.links{display:none}.hero{padding-top:75px}.grid,.about{grid-template-columns:1fr}.card{padding:22px}}
+@media(max-width:720px){.links{display:none}.hero{padding-top:75px}.grid,.about{grid-template-columns:1fr}.card{padding:22px}.chat-button{font-size:25px;padding:18px 20px}}
 </style>
 </head>
 <body>
@@ -43,6 +44,9 @@ footer{padding:35px 0;color:var(--muted);border-top:1px solid var(--line);font-s
 <span class="badge">House</span>
 <h1><span>Добро</span><span>пожаловать!</span></h1>
 <p class="lead">Это моё личное пространство в интернете. Здесь будут мои проекты, интересы, полезные материалы и информация, которой я хочу поделиться.</p>
+
+<a class="chat-button" href="https://house25.atwebpages.com/">Чат</a>
+
 <div class="buttons"><a class="btn primary" href="#about">Смотреть сайт</a><a class="btn" href="mailto:bretuf@gmail.com">Связаться</a></div>
 </div></section>
 
